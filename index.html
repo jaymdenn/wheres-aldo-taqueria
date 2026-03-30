@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where's Aldo? Taqueria | Authentic Mexican Street Tacos</title>
+    <meta name="description" content="Where's Aldo? Taqueria - Authentic Yucatecan street tacos from our mobile taqueria serving the Wasatch Front. Catering available for weddings and events.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lato:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#home" class="nav-logo">DUDE, I'M RIGHT HERE</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="https://facebook.com/wheres.aldo.taqueria" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/wheres.aldo.taqueria/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://yelp.com/biz/FFvNpQFXO-vXgru85XvMJg" target="_blank" rel="noopener noreferrer" aria-label="Yelp">
+                    <i class="fab fa-yelp"></i>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="neon-text">I'll bring the tacos!</h1>
+            <div class="hero-cta-row">
+                <p>Our mobile taqueria is coming to a neighborhood near you!</p>
+                <a href="#find-aldo" class="btn btn-primary">FIND ALDO!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo/Brand Section -->
+    <section class="brand-section">
+        <div class="brand-overlay"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <!-- Papel Picado Banner -->
+        <div class="papel-picado" id="papel-picado-about"></div>
+        <div class="container">
+            <p class="section-quip">"If you don't like tacos, I'm nacho type." 🌮</p>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h2>Street Tacos and More</h2>
+                    <p>Aldo brings his favorite family recipes from Mérida, the vibrant capital of the Mexican state of Yucatán. Each specialty meat is marinated overnight, cooked to perfection, and topped with fresh homemade salsas.</p>
+                    <p class="fun-quip">Life is too short for bad tacos! 🔥</p>
+                </div>
+                <div class="about-card">
+                    <h2>Coming to You</h2>
+                    <p>We bring quick, authentic Mexican food to locations all over the Wasatch Front. Want us to stop by your business for lunch? Send us a message!</p>
+                    <p class="fun-quip">In queso emergency, call us! 📞</p>
+                </div>
+                <div class="about-card">
+                    <h2>Available for Events</h2>
+                    <p>Do you have a wedding, company picnic or other special event coming up? We book up fast! We can also come to your private indoor venue.</p>
+                    <p class="fun-quip">Let's taco 'bout your party! 🎉</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="events-schedule">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <p class="section-quip">"In case of taco emergency, call 9-JUAN-JUAN!" 🚨</p>
+            <p class="schedule-intro">Our calendar shows our scheduled stops. Click on a date to see event details!</p>
+
+            <!-- Interactive Calendar -->
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="calendar-nav" id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                    <h3 class="calendar-title" id="calendar-month-year">April 2025</h3>
+                    <button class="calendar-nav" id="next-month"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="calendar-days" id="calendar-days">
+                    <!-- Days will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Event Details Panel -->
+            <div class="event-details-panel" id="event-details-panel">
+                <div class="event-details-content">
+                    <p class="event-details-hint"><i class="fas fa-hand-pointer"></i> Click on a highlighted date to see event details</p>
+                </div>
+            </div>
+
+            <!-- Upcoming Events List -->
+            <div class="events-list">
+                <h3>This Week's Schedule</h3>
+
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">Wed</span>
+                        <span class="event-day-num">Apr 1st</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>Cannon Building</h4>
+                        <p><i class="fas fa-clock"></i> 11:00 AM - 2:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 288 North 1460 West, Salt Lake City, Utah, 84116</p>
+                    </div>
+                </div>
+
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">Wed</span>
+                        <span class="event-day-num">Apr 1st</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>World Cup Trophy Tour</h4>
+                        <p><i class="fas fa-clock"></i> 12:00 PM - 8:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> America First Field</p>
+                    </div>
+                </div>
+
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">Thu</span>
+                        <span class="event-day-num">Apr 2nd</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>Gallivan Center</h4>
+                        <p><i class="fas fa-clock"></i> 11:00 AM - 1:30 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 50 E 200 S, Salt Lake City, Utah 84111</p>
+                    </div>
+                </div>
+
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">Fri</span>
+                        <span class="event-day-num">Apr 3rd</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>U of U Health Sciences</h4>
+                        <p><i class="fas fa-clock"></i> 11:00 AM - 2:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 10 North 1900 East, Salt Lake City, Utah, 84132</p>
+                    </div>
+                </div>
+
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">Fri</span>
+                        <span class="event-day-num">Apr 3rd</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>Cottonwood Corp</h4>
+                        <p><i class="fas fa-clock"></i> 11:00 AM - 2:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 2795 E Cottonwood Pkwy, Salt Lake City, Utah</p>
+                    </div>
+                </div>
+
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">Sat</span>
+                        <span class="event-day-num">Apr 4th</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>Real Salt Lake vs Kansas City</h4>
+                        <p><i class="fas fa-clock"></i> 1:00 PM - 6:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> America First Field - 9256 S State St, Sandy, UT</p>
+                    </div>
+                </div>
+
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">Mon</span>
+                        <span class="event-day-num">Apr 6th</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>Nelson Labs</h4>
+                        <p><i class="fas fa-clock"></i> 11:00 AM - 2:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 6280 S Redwood Rd, Salt Lake City, Utah</p>
+                    </div>
+                </div>
+
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">Mon</span>
+                        <span class="event-day-num">Apr 6th</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>Sandy League Night</h4>
+                        <p><i class="fas fa-clock"></i> 5:00 PM - 8:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 1245 E 9400 S, Sandy</p>
+                    </div>
+                </div>
+
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">Tue</span>
+                        <span class="event-day-num">Apr 7th</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>Towne Ridge Towers</h4>
+                        <p><i class="fas fa-clock"></i> 11:00 AM - 2:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 100 West Towne Ridge Parkway, Sandy, Utah, 84070</p>
+                    </div>
+                </div>
+
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">Tue</span>
+                        <span class="event-day-num">Apr 7th</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>Private Lunch</h4>
+                        <p><i class="fas fa-clock"></i> 11:00 AM - 1:30 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 11493 Regal Ridge Ct, Kamas, UT</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-cta">
+                <p>Want us to come to your location or event?</p>
+                <a href="#contact" class="btn btn-primary">Request a Visit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Find Aldo / Social Section -->
+    <section id="find-aldo" class="schedule">
+        <div class="container">
+            <h2>GET YOUR TACO FIX HERE</h2>
+            <p class="schedule-subtitle">Check our social media for the latest locations and times!</p>
+            <div class="social-links-large">
+                <a href="https://facebook.com/wheres.aldo.taqueria" target="_blank" rel="noopener noreferrer" class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Follow on Facebook</span>
+                </a>
+                <a href="https://instagram.com/wheres.aldo.taqueria/" target="_blank" rel="noopener noreferrer" class="social-btn instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Follow on Instagram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="menu-bg-overlay"></div>
+        <div class="container">
+            <div class="menu-header">
+                <img src="images/logo-bg.jpg" alt="Where's Aldo? Taqueria" class="menu-logo">
+                <p class="menu-quip">🌮 Taco 'bout delicious! 🌮</p>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Column 1: Meats & A La Carte -->
+                <div class="menu-column">
+                    <div class="menu-category">
+                        <h3 class="menu-category-title">Al Pastor</h3>
+                        <p class="menu-item-desc">Grilled pork topped with fresh pineapple.</p>
+                    </div>
+                    <div class="menu-category">
+                        <h3 class="menu-category-title">Birria</h3>
+                        <p class="menu-item-desc">Marinated, slow-cooked beef</p>
+                    </div>
+                    <div class="menu-category">
+                        <h3 class="menu-category-title">Carne Asada</h3>
+                        <p class="menu-item-desc">Premium chopped flank steak</p>
+                    </div>
+                    <div class="menu-category">
+                        <h3 class="menu-category-title">Carnitas</h3>
+                        <p class="menu-item-desc">Braised pork, slow cooked overnight</p>
+                    </div>
+                    <div class="menu-category">
+                        <h3 class="menu-category-title">Pollo</h3>
+                        <p class="menu-item-desc">Marinated grilled chicken topped with fresh mango salsa</p>
+                    </div>
+                    <div class="menu-category">
+                        <h3 class="menu-category-title">Champiñones <span class="tag vegan">V</span></h3>
+                        <p class="menu-item-desc">Portobello mushrooms sautéed with fresh pico de gallo</p>
+                    </div>
+
+                    <div class="menu-divider"></div>
+
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <h3 class="menu-category-title">A La Carte <span class="tag gf">GF</span></h3>
+                            <span class="menu-price">$4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2: Specialty Quesadillas -->
+                <div class="menu-column">
+                    <h2 class="menu-section-title">Specialty Quesadillas</h2>
+
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <h3 class="menu-category-title">Queso Lovers</h3>
+                            <span class="menu-price">$16</span>
+                        </div>
+                        <p class="menu-item-desc">Gooey cheese and your choice of meat melted inside a large 12" crispy flour tortilla. Served with a side of chips & pico de gallo.</p>
+                    </div>
+
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <h3 class="menu-category-title">Gringa</h3>
+                            <span class="menu-price">$16</span>
+                        </div>
+                        <p class="menu-item-desc">A 12" flour tortilla filled with al pastor meat, cheese, pineapple, red onion and cilantro. Served with a side of chips & pico de gallo.</p>
+                    </div>
+
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <h3 class="menu-category-title">Quesa-Birria <span class="tag gf">GF</span></h3>
+                            <span class="menu-price">$17</span>
+                        </div>
+                        <p class="menu-item-desc">AKA Mexican French Dip! 3 medium corn tortillas topped with shredded birria beef, melted cheese, onion and cilantro. Served with consomé for dipping.</p>
+                    </div>
+                </div>
+
+                <!-- Column 3: Niño Meal & Sides -->
+                <div class="menu-column">
+                    <h2 class="menu-section-title">Niño Meal</h2>
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <h3 class="menu-category-title">For Amigos Under 10</h3>
+                            <span class="menu-price">$9</span>
+                        </div>
+                        <p class="menu-item-desc">One small cheese quesadilla or taco of your choice, served with chips and queso dip or salsa, and canned soda or bottled water. Upgrade to bottled soda for $1 more.</p>
+                    </div>
+
+                    <div class="menu-divider"></div>
+
+                    <h2 class="menu-section-title">Sides</h2>
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <h3 class="menu-category-title">Chips and Salsa <span class="tag vegan">V</span></h3>
+                            <span class="menu-price">$6</span>
+                        </div>
+                        <p class="menu-item-desc">A full bag of lightly salted tortilla chips with your choice of freshly made salsa:</p>
+                        <ul class="menu-list">
+                            <li>Pico de Gallo</li>
+                            <li>Mango Salsa</li>
+                        </ul>
+                    </div>
+
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <h3 class="menu-category-title">Que-So Where's Aldo?</h3>
+                            <span class="menu-price">$8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4: Nachitos & Churros -->
+                <div class="menu-column">
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <h3 class="menu-category-title">Nachitos</h3>
+                            <span class="menu-price">$11</span>
+                        </div>
+                        <p class="menu-item-desc">A half portion of chips smothered in queso dip and topped with your choice of meat, pico de gallo, cilantro, lime, and sour cream.</p>
+                    </div>
+
+                    <div class="menu-divider"></div>
+
+                    <h2 class="menu-section-title">Churros</h2>
+                    <p class="menu-item-desc">Warm churros rolled in cinnamon sugar and served with homemade vanilla dipping sauce.</p>
+
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">3 Piece</span>
+                            <span class="menu-price">$5</span>
+                        </div>
+                    </div>
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">6 Piece</span>
+                            <span class="menu-price">$8</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-divider"></div>
+
+                    <div class="menu-category">
+                        <div class="menu-item-header">
+                            <h3 class="menu-category-title">Bottled Water</h3>
+                            <span class="menu-price">$2.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Photo Gallery</h2>
+            <p class="section-quip">"Every taco is a good taco... but ours are the best!" 📸</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-caption="Street Taco Perfection 🌮">
+                    <img src="images/Taco 1.webp" alt="Delicious street tacos" loading="lazy">
+                </div>
+                <div class="gallery-item" data-caption="Al Pastor Heaven 🍍">
+                    <img src="images/Taco 2.webp" alt="Al pastor tacos with pineapple" loading="lazy">
+                </div>
+                <div class="gallery-item" data-caption="Birria Bliss 🔥">
+                    <img src="images/Taco 3.webp" alt="Birria tacos with consomé" loading="lazy">
+                </div>
+                <div class="gallery-item" data-caption="Fresh & Zesty 🍋">
+                    <img src="images/Taco 4.webp" alt="Fresh tacos with lime" loading="lazy">
+                </div>
+            </div>
+
+            <p class="gallery-cta">Follow us on social media for more photos and updates!</p>
+            <div class="gallery-social">
+                <a href="https://instagram.com/wheres.aldo.taqueria/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <i class="fab fa-instagram"></i> Follow on Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <p class="section-quip">"Wanna taco 'bout it? We're all ears!" 👂🌮</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Contact Us</h2>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bountiful, Utah 84010, United States</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+13853190081">(385) 319-0081</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@wheresaldotaqueria.com">info@wheresaldotaqueria.com</a>
+                        </div>
+                    </div>
+                    <a href="mailto:info@wheresaldotaqueria.com?subject=Catering%20Request" class="btn btn-secondary">Catering Requests</a>
+                </div>
+                <div class="contact-form-wrapper">
+                    <h3>Send us a message</h3>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-quip">🌮 "You had me at tacos!" 🌮</p>
+            <div class="footer-social">
+                <a href="https://facebook.com/wheres.aldo.taqueria" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/wheres.aldo.taqueria/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://yelp.com/biz/FFvNpQFXO-vXgru85XvMJg" target="_blank" rel="noopener noreferrer" aria-label="Yelp">
+                    <i class="fab fa-yelp"></i>
+                </a>
+            </div>
+            <p class="footer-copyright">Copyright &copy; 2026 Where's Aldo? Taqueria - All Rights Reserved.</p>
+            <a href="https://maps.google.com/?q=Bountiful,+Utah+84010" target="_blank" rel="noopener noreferrer" class="footer-directions">
+                <i class="fas fa-directions"></i> Get directions
+            </a>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <p>This website uses cookies. By continuing to use this site, you accept our use of cookies.</p>
+        <button id="accept-cookies" class="btn btn-small">Accept</button>
+    </div>
+
+    <!-- Taco Counter Widget -->
+    <div class="taco-counter" id="taco-counter">
+        <span class="taco-counter-icon">🌮</span>
+        <span>Tacos served today:</span>
+        <span class="taco-counter-number" id="taco-count">0</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

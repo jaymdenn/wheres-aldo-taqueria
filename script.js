@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTacoCounter();
     initPinataBurst();
     initAldoTracker();
+    initFiestaMusic();
 });
 
 /* ========================================
@@ -885,6 +886,77 @@ function initTacoCounter() {
 /* ========================================
    Pinata Burst Animation
    ======================================== */
+/* ========================================
+   Fiesta Music Player
+   ======================================== */
+function initFiestaMusic() {
+    const musicToggle = document.getElementById('music-toggle');
+    const music = document.getElementById('fiesta-music');
+    const musicText = musicToggle?.querySelector('.music-text');
+
+    if (!musicToggle || !music) return;
+
+    let isPlaying = false;
+
+    // Set volume
+    music.volume = 0.3;
+
+    musicToggle.addEventListener('click', function() {
+        if (isPlaying) {
+            music.pause();
+            musicToggle.classList.remove('playing');
+            if (musicText) musicText.textContent = 'FIESTA MODE';
+            isPlaying = false;
+        } else {
+            music.play().then(() => {
+                musicToggle.classList.add('playing');
+                if (musicText) musicText.textContent = '¡FIESTA!';
+                isPlaying = true;
+
+                // Trigger confetti when music starts!
+                if (typeof launchConfetti === 'function') {
+                    // Small confetti burst
+                    for (let i = 0; i < 30; i++) {
+                        setTimeout(() => {
+                            const confetti = document.createElement('div');
+                            confetti.className = 'confetti-piece';
+                            const colors = ['#CE1126', '#006847', '#FFFFFF', '#F8B334', '#E84A8A'];
+                            const color = colors[Math.floor(Math.random() * colors.length)];
+                            const size = Math.random() * 10 + 5;
+                            const startX = Math.random() * window.innerWidth;
+
+                            confetti.style.cssText = `
+                                position: fixed;
+                                top: -20px;
+                                left: ${startX}px;
+                                width: ${size}px;
+                                height: ${size}px;
+                                background-color: ${color};
+                                z-index: 10000;
+                                pointer-events: none;
+                                border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+                                animation: confettiFall ${2 + Math.random() * 2}s ease-out forwards;
+                            `;
+
+                            document.body.appendChild(confetti);
+                            setTimeout(() => confetti.remove(), 4000);
+                        }, i * 50);
+                    }
+                }
+            }).catch(err => {
+                console.log('Audio playback failed:', err);
+            });
+        }
+    });
+
+    // Update button when music ends (if not looping)
+    music.addEventListener('ended', function() {
+        musicToggle.classList.remove('playing');
+        if (musicText) musicText.textContent = 'FIESTA MODE';
+        isPlaying = false;
+    });
+}
+
 /* ========================================
    Live Aldo Tracker Map
    ======================================== */

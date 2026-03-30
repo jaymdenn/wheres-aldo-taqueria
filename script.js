@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPapelPicado();
     initTacoCounter();
     initPinataBurst();
+    initAldoTracker();
 });
 
 /* ========================================
@@ -884,6 +885,155 @@ function initTacoCounter() {
 /* ========================================
    Pinata Burst Animation
    ======================================== */
+/* ========================================
+   Live Aldo Tracker Map
+   ======================================== */
+function initAldoTracker() {
+    const mapContainer = document.getElementById('aldo-map');
+    if (!mapContainer) return;
+
+    // Aldo's current/scheduled locations - update these as needed!
+    const aldoLocations = [
+        {
+            name: "Gallivan Center",
+            address: "50 E 200 S, Salt Lake City, Utah 84111",
+            hours: "11:00 AM - 1:30 PM",
+            lat: 40.7637,
+            lng: -111.8882,
+            isLive: true
+        },
+        {
+            name: "America First Field",
+            address: "9256 S State St, Sandy, UT 84070",
+            hours: "1:00 PM - 6:00 PM",
+            lat: 40.5829,
+            lng: -111.8932,
+            isLive: false
+        },
+        {
+            name: "U of U Health Sciences",
+            address: "10 North 1900 East, Salt Lake City, Utah 84132",
+            hours: "11:00 AM - 2:00 PM",
+            lat: 40.7705,
+            lng: -111.8375,
+            isLive: false
+        }
+    ];
+
+    // Get current location (first one marked as live, or first in list)
+    const currentLocation = aldoLocations.find(loc => loc.isLive) || aldoLocations[0];
+
+    // Update the status display
+    const locationName = document.getElementById('current-location-name');
+    const locationAddress = document.getElementById('current-location-address');
+    const locationHours = document.getElementById('current-location-hours');
+    const statusIndicator = document.querySelector('.status-indicator');
+
+    if (locationName) locationName.textContent = currentLocation.name;
+    if (locationAddress) locationAddress.innerHTML = `<i class="fas fa-map-marker-alt"></i> <span>${currentLocation.address}</span>`;
+    if (locationHours) locationHours.innerHTML = `<i class="fas fa-clock"></i> <span>${currentLocation.hours}</span>`;
+
+    // Check if currently open based on time
+    const now = new Date();
+    const currentHour = now.getHours();
+    const isOpen = currentHour >= 11 && currentHour < 20; // Assume open 11am-8pm
+
+    if (!isOpen && statusIndicator) {
+        statusIndicator.classList.add('offline');
+        statusIndicator.querySelector('.status-text').textContent = "ALDO IS RESTING";
+    }
+
+    // Initialize the map
+    const map = L.map('aldo-map', {
+        scrollWheelZoom: false
+    }).setView([currentLocation.lat, currentLocation.lng], 14);
+
+    // Add tile layer (using a stylish dark theme)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+    }).addTo(map);
+
+    // Create custom taco marker icon
+    const tacoIcon = L.divIcon({
+        className: 'aldo-marker',
+        html: `
+            <div class="aldo-marker-inner">
+                <div class="aldo-marker-pin"></div>
+                <div class="aldo-marker-pulse"></div>
+            </div>
+        `,
+        iconSize: [50, 60],
+        iconAnchor: [25, 60],
+        popupAnchor: [0, -60]
+    });
+
+    // Add marker for current location
+    const marker = L.marker([currentLocation.lat, currentLocation.lng], {
+        icon: tacoIcon
+    }).addTo(map);
+
+    // Create festive popup
+    const popupContent = `
+        <div style="text-align: center; padding: 10px; min-width: 200px;">
+            <h3 style="font-family: 'Fjalla One', sans-serif; color: #CE1126; margin: 0 0 8px 0; font-size: 1.1rem;">
+                🌮 ALDO IS HERE! 🌮
+            </h3>
+            <p style="margin: 0 0 5px 0; font-weight: 600;">${currentLocation.name}</p>
+            <p style="margin: 0 0 5px 0; font-size: 0.85rem; color: #666;">${currentLocation.address}</p>
+            <p style="margin: 0 0 10px 0; font-size: 0.85rem; color: #006847;">
+                <strong>${currentLocation.hours}</strong>
+            </p>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=${currentLocation.lat},${currentLocation.lng}"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="display: inline-block; background: #CE1126; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-family: 'Fjalla One', sans-serif; font-size: 0.85rem;">
+                GET DIRECTIONS 🚗
+            </a>
+        </div>
+    `;
+
+    marker.bindPopup(popupContent, {
+        maxWidth: 300
+    });
+
+    // Open popup by default
+    marker.openPopup();
+
+    // Add other locations as smaller markers
+    aldoLocations.forEach(location => {
+        if (location !== currentLocation) {
+            const smallIcon = L.divIcon({
+                className: 'aldo-marker-small',
+                html: `<div style="
+                    width: 20px;
+                    height: 20px;
+                    background: #F8B334;
+                    border: 2px solid #fff;
+                    border-radius: 50%;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 10px;
+                ">📍</div>`,
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
+            });
+
+            L.marker([location.lat, location.lng], { icon: smallIcon })
+                .addTo(map)
+                .bindPopup(`
+                    <div style="text-align: center; padding: 5px;">
+                        <strong>${location.name}</strong><br>
+                        <small>${location.hours}</small>
+                    </div>
+                `);
+        }
+    });
+}
+
 function initPinataBurst() {
     const triggerElements = document.querySelectorAll('.btn-primary, .about-card, .gallery-item');
     const candies = ['🍬', '🍭', '🎊', '⭐', '🌟', '💫', '🍫', '🎁'];

@@ -1656,6 +1656,289 @@ html {
 }
 
 /* ========================================
+   LIVE ALDO TRACKER
+   ======================================== */
+.aldo-tracker {
+    padding: var(--spacing-xl) 0;
+    padding-top: calc(var(--spacing-xl) + 30px);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: var(--color-white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative top border */
+.aldo-tracker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3Cpath d='M0,0 L60,0 L60,15 C50,15 50,25 40,25 C30,25 30,15 20,15 C10,15 10,25 0,25 Z' fill='%23F8B334'/%3E%3Cpath d='M10,8 L10,12 M20,5 L20,15 M30,8 L30,12 M40,5 L40,15 M50,8 L50,12' stroke='%23fff' stroke-width='1' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 60px 30px;
+    background-repeat: repeat-x;
+    z-index: 5;
+}
+
+.aldo-tracker h2 {
+    color: var(--color-accent);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: var(--spacing-sm);
+}
+
+.aldo-tracker .section-quip {
+    color: var(--color-white);
+    background: rgba(255,255,255,0.1);
+}
+
+.tracker-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Status indicator */
+.tracker-status {
+    margin-bottom: var(--spacing-md);
+}
+
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(0, 200, 83, 0.2);
+    border: 2px solid #00c853;
+    padding: 0.75rem 1.5rem;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    background: #00c853;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(0, 200, 83, 0);
+    }
+}
+
+.status-text {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: #00c853;
+    letter-spacing: 2px;
+}
+
+/* When closed/offline */
+.status-indicator.offline {
+    background: rgba(255, 82, 82, 0.2);
+    border-color: #ff5252;
+}
+
+.status-indicator.offline .status-dot {
+    background: #ff5252;
+    animation: none;
+}
+
+.status-indicator.offline .status-text {
+    color: #ff5252;
+}
+
+.current-location h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-white);
+    margin-bottom: 0.5rem;
+}
+
+.current-location p {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 0.25rem;
+}
+
+.current-location p i {
+    color: var(--color-accent);
+    margin-right: 0.5rem;
+}
+
+/* Map container */
+.map-container {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    overflow: hidden;
+    border: 4px solid var(--color-accent);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.aldo-map {
+    height: 400px;
+    width: 100%;
+    background: #1a1a2e;
+}
+
+.map-overlay-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.map-taco {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.8;
+    animation: floatTaco 4s ease-in-out infinite;
+}
+
+.map-taco-1 {
+    top: 10px;
+    left: 10px;
+    animation-delay: 0s;
+}
+
+.map-taco-2 {
+    top: 10px;
+    right: 10px;
+    animation-delay: -1.3s;
+}
+
+.map-taco-3 {
+    bottom: 10px;
+    left: 10px;
+    animation-delay: -2.6s;
+}
+
+@keyframes floatTaco {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* Tracker info cards */
+.tracker-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.tracker-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-md);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border: 2px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.tracker-card:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+}
+
+.tracker-card i {
+    font-size: 2rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+.tracker-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--color-white);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tracker-card p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Custom map marker */
+.aldo-marker {
+    background: none;
+    border: none;
+}
+
+.aldo-marker-inner {
+    position: relative;
+    width: 50px;
+    height: 60px;
+}
+
+.aldo-marker-pin {
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    border: 3px solid var(--color-accent);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    animation: markerBounce 2s ease-in-out infinite;
+}
+
+.aldo-marker-pin::after {
+    content: '🌮';
+    font-size: 1.5rem;
+    transform: rotate(45deg);
+}
+
+.aldo-marker-pulse {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 10px;
+    background: rgba(206, 17, 38, 0.4);
+    border-radius: 50%;
+    animation: markerPulse 2s ease-in-out infinite;
+}
+
+@keyframes markerBounce {
+    0%, 100% { transform: rotate(-45deg) translateY(0); }
+    50% { transform: rotate(-45deg) translateY(-10px); }
+}
+
+@keyframes markerPulse {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.4; }
+    50% { transform: translateX(-50%) scale(1.5); opacity: 0.1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tracker-info {
+        grid-template-columns: 1fr;
+    }
+
+    .aldo-map {
+        height: 300px;
+    }
+
+    .current-location h3 {
+        font-size: 1.25rem;
+    }
+}
+
+/* ========================================
    PAPEL PICADO INTRICATE DESIGNS
    ======================================== */
 

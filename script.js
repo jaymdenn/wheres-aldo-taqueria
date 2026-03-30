@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initTacoCounter();
     initPinataBurst();
     initAldoTracker();
-    initFiestaMusic();
 });
 
 /* ========================================
@@ -886,102 +885,6 @@ function initTacoCounter() {
 /* ========================================
    Pinata Burst Animation
    ======================================== */
-/* ========================================
-   Fiesta Music Player
-   ======================================== */
-function initFiestaMusic() {
-    const musicToggle = document.getElementById('music-toggle');
-    const music = document.getElementById('fiesta-music');
-    const musicText = musicToggle?.querySelector('.music-text');
-
-    if (!musicToggle || !music) return;
-
-    let isPlaying = false;
-
-    // Set volume
-    music.volume = 0.4;
-
-    // Function to trigger confetti
-    function triggerMusicConfetti() {
-        for (let i = 0; i < 30; i++) {
-            setTimeout(() => {
-                const confetti = document.createElement('div');
-                const colors = ['#CE1126', '#006847', '#FFFFFF', '#F8B334', '#E84A8A'];
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                const size = Math.random() * 10 + 5;
-                const startX = Math.random() * window.innerWidth;
-
-                confetti.style.cssText = `
-                    position: fixed;
-                    top: -20px;
-                    left: ${startX}px;
-                    width: ${size}px;
-                    height: ${size}px;
-                    background-color: ${color};
-                    z-index: 10000;
-                    pointer-events: none;
-                    border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
-                    animation: confettiFall ${2 + Math.random() * 2}s ease-out forwards;
-                `;
-
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 4000);
-            }, i * 50);
-        }
-    }
-
-    musicToggle.addEventListener('click', function() {
-        if (isPlaying) {
-            music.pause();
-            musicToggle.classList.remove('playing');
-            if (musicText) musicText.textContent = 'FIESTA MODE';
-            isPlaying = false;
-        } else {
-            // Try to play music
-            const playPromise = music.play();
-
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    musicToggle.classList.add('playing');
-                    if (musicText) musicText.textContent = '¡FIESTA!';
-                    isPlaying = true;
-                    triggerMusicConfetti();
-                }).catch(err => {
-                    console.log('Audio playback failed:', err);
-                    // Still show visual feedback even if audio fails
-                    musicToggle.classList.add('playing');
-                    if (musicText) musicText.textContent = '¡FIESTA!';
-                    isPlaying = true;
-                    triggerMusicConfetti();
-
-                    // Show a message that audio couldn't play
-                    alert('🎺 Audio may be blocked by your browser. Try clicking again or check your browser settings!');
-                    musicToggle.classList.remove('playing');
-                    if (musicText) musicText.textContent = 'FIESTA MODE';
-                    isPlaying = false;
-                });
-            }
-        }
-    });
-
-    // Update button when music ends (if not looping)
-    music.addEventListener('ended', function() {
-        musicToggle.classList.remove('playing');
-        if (musicText) musicText.textContent = 'FIESTA MODE';
-        isPlaying = false;
-    });
-
-    // Log when audio is ready
-    music.addEventListener('canplaythrough', function() {
-        console.log('Fiesta music loaded and ready!');
-    });
-
-    // Log audio errors
-    music.addEventListener('error', function(e) {
-        console.log('Audio error:', e);
-    });
-}
-
 /* ========================================
    Live Aldo Tracker Map
    ======================================== */

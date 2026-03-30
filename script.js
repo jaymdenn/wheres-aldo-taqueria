@@ -899,7 +899,36 @@ function initFiestaMusic() {
     let isPlaying = false;
 
     // Set volume
-    music.volume = 0.3;
+    music.volume = 0.4;
+
+    // Function to trigger confetti
+    function triggerMusicConfetti() {
+        for (let i = 0; i < 30; i++) {
+            setTimeout(() => {
+                const confetti = document.createElement('div');
+                const colors = ['#CE1126', '#006847', '#FFFFFF', '#F8B334', '#E84A8A'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const size = Math.random() * 10 + 5;
+                const startX = Math.random() * window.innerWidth;
+
+                confetti.style.cssText = `
+                    position: fixed;
+                    top: -20px;
+                    left: ${startX}px;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background-color: ${color};
+                    z-index: 10000;
+                    pointer-events: none;
+                    border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+                    animation: confettiFall ${2 + Math.random() * 2}s ease-out forwards;
+                `;
+
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 4000);
+            }, i * 50);
+        }
+    }
 
     musicToggle.addEventListener('click', function() {
         if (isPlaying) {
@@ -908,44 +937,30 @@ function initFiestaMusic() {
             if (musicText) musicText.textContent = 'FIESTA MODE';
             isPlaying = false;
         } else {
-            music.play().then(() => {
-                musicToggle.classList.add('playing');
-                if (musicText) musicText.textContent = '¡FIESTA!';
-                isPlaying = true;
+            // Try to play music
+            const playPromise = music.play();
 
-                // Trigger confetti when music starts!
-                if (typeof launchConfetti === 'function') {
-                    // Small confetti burst
-                    for (let i = 0; i < 30; i++) {
-                        setTimeout(() => {
-                            const confetti = document.createElement('div');
-                            confetti.className = 'confetti-piece';
-                            const colors = ['#CE1126', '#006847', '#FFFFFF', '#F8B334', '#E84A8A'];
-                            const color = colors[Math.floor(Math.random() * colors.length)];
-                            const size = Math.random() * 10 + 5;
-                            const startX = Math.random() * window.innerWidth;
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    musicToggle.classList.add('playing');
+                    if (musicText) musicText.textContent = '¡FIESTA!';
+                    isPlaying = true;
+                    triggerMusicConfetti();
+                }).catch(err => {
+                    console.log('Audio playback failed:', err);
+                    // Still show visual feedback even if audio fails
+                    musicToggle.classList.add('playing');
+                    if (musicText) musicText.textContent = '¡FIESTA!';
+                    isPlaying = true;
+                    triggerMusicConfetti();
 
-                            confetti.style.cssText = `
-                                position: fixed;
-                                top: -20px;
-                                left: ${startX}px;
-                                width: ${size}px;
-                                height: ${size}px;
-                                background-color: ${color};
-                                z-index: 10000;
-                                pointer-events: none;
-                                border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
-                                animation: confettiFall ${2 + Math.random() * 2}s ease-out forwards;
-                            `;
-
-                            document.body.appendChild(confetti);
-                            setTimeout(() => confetti.remove(), 4000);
-                        }, i * 50);
-                    }
-                }
-            }).catch(err => {
-                console.log('Audio playback failed:', err);
-            });
+                    // Show a message that audio couldn't play
+                    alert('🎺 Audio may be blocked by your browser. Try clicking again or check your browser settings!');
+                    musicToggle.classList.remove('playing');
+                    if (musicText) musicText.textContent = 'FIESTA MODE';
+                    isPlaying = false;
+                });
+            }
         }
     });
 
@@ -954,6 +969,16 @@ function initFiestaMusic() {
         musicToggle.classList.remove('playing');
         if (musicText) musicText.textContent = 'FIESTA MODE';
         isPlaying = false;
+    });
+
+    // Log when audio is ready
+    music.addEventListener('canplaythrough', function() {
+        console.log('Fiesta music loaded and ready!');
+    });
+
+    // Log audio errors
+    music.addEventListener('error', function(e) {
+        console.log('Audio error:', e);
     });
 }
 

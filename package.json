@@ -1,0 +1,11 @@
+{
+  "name": "wheres-aldo-taqueria",
+  "version": "1.0.0",
+  "description": "Where's Aldo? Taqueria website",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

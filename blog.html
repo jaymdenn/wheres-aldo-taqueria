@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Where's Aldo? Taqueria</title>
+    <meta name="description" content="Read the latest news, recipes, and stories from Where's Aldo? Taqueria - your favorite mobile taqueria serving authentic Yucatecan street tacos.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lato:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav-logo">WHERE'S ALDO?</a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#menu">Menu</a></li>
+                <li><a href="index.html#schedule">Schedule</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="https://facebook.com/wheres.aldo.taqueria" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/wheres.aldo.taqueria/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://yelp.com/biz/FFvNpQFXO-vXgru85XvMJg" target="_blank" rel="noopener noreferrer" aria-label="Yelp">
+                    <i class="fab fa-yelp"></i>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="blog-hero-overlay"></div>
+        <div class="blog-hero-content">
+            <h1>Taco Talk</h1>
+            <p>Stories, recipes, and news from the taqueria</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-section">
+        <div class="container">
+            <!-- Category Filter -->
+            <div class="blog-filters">
+                <button class="filter-btn active" data-category="all">All Posts</button>
+                <button class="filter-btn" data-category="news">News</button>
+                <button class="filter-btn" data-category="recipes">Recipes</button>
+                <button class="filter-btn" data-category="events">Events</button>
+                <button class="filter-btn" data-category="behind-the-scenes">Behind the Scenes</button>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="blog-grid" id="blog-grid">
+                <!-- Articles will be loaded dynamically -->
+                <div class="blog-loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading articles...</p>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="blog-empty" id="blog-empty" style="display: none;">
+                <i class="fas fa-newspaper"></i>
+                <h3>No Articles Yet</h3>
+                <p>Check back soon for delicious content!</p>
+            </div>
+
+            <!-- Pagination -->
+            <div class="blog-pagination" id="blog-pagination" style="display: none;">
+                <button class="pagination-btn" id="prev-page" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <span class="pagination-info" id="pagination-info">Page 1 of 1</span>
+                <button class="pagination-btn" id="next-page" disabled>
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="blog-newsletter">
+        <div class="container">
+            <h2>Stay in the Loop!</h2>
+            <p>Get notified about new blog posts, special events, and exclusive deals.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-quip">"You had me at tacos!"</p>
+            <div class="footer-social">
+                <a href="https://facebook.com/wheres.aldo.taqueria" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/wheres.aldo.taqueria/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://yelp.com/biz/FFvNpQFXO-vXgru85XvMJg" target="_blank" rel="noopener noreferrer" aria-label="Yelp">
+                    <i class="fab fa-yelp"></i>
+                </a>
+            </div>
+            <p class="footer-copyright">Copyright &copy; 2026 Where's Aldo? Taqueria - All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Article | Where's Aldo? Taqueria</title>
+    <meta name="description" id="page-description" content="Read this article from Where's Aldo? Taqueria blog.">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" id="og-title" content="Where's Aldo? Taqueria Blog">
+    <meta property="og:description" id="og-description" content="">
+    <meta property="og:image" id="og-image" content="">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lato:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav-logo">WHERE'S ALDO?</a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#menu">Menu</a></li>
+                <li><a href="index.html#schedule">Schedule</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="https://facebook.com/wheres.aldo.taqueria" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/wheres.aldo.taqueria/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://yelp.com/biz/FFvNpQFXO-vXgru85XvMJg" target="_blank" rel="noopener noreferrer" aria-label="Yelp">
+                    <i class="fab fa-yelp"></i>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Article Loading State -->
+    <div class="article-loading" id="article-loading">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Loading article...</p>
+    </div>
+
+    <!-- Article Not Found -->
+    <div class="article-not-found" id="article-not-found" style="display: none;">
+        <div class="container">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h1>Article Not Found</h1>
+            <p>Sorry, we couldn't find the article you're looking for.</p>
+            <a href="blog.html" class="btn btn-primary">Back to Blog</a>
+        </div>
+    </div>
+
+    <!-- Article Content (populated by JS) -->
+    <article class="article-page" id="article-page" style="display: none;">
+        <!-- Featured Image -->
+        <div class="article-hero" id="article-hero">
+            <div class="article-hero-overlay"></div>
+            <div class="article-hero-content">
+                <span class="article-category" id="article-category">Category</span>
+                <h1 class="article-title" id="article-title">Article Title</h1>
+                <div class="article-meta">
+                    <span class="article-date" id="article-date">
+                        <i class="fas fa-calendar-alt"></i> March 25, 2026
+                    </span>
+                    <span class="article-read-time" id="article-read-time">
+                        <i class="fas fa-clock"></i> 5 min read
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Article Body -->
+        <div class="article-body">
+            <div class="container">
+                <div class="article-content" id="article-content">
+                    <!-- Content injected here -->
+                </div>
+
+                <!-- Share Buttons -->
+                <div class="article-share">
+                    <span>Share this article:</span>
+                    <div class="share-buttons">
+                        <a href="#" class="share-btn facebook" id="share-facebook" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="share-btn twitter" id="share-twitter" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="share-btn linkedin" id="share-linkedin" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <button class="share-btn copy" id="share-copy" title="Copy link">
+                            <i class="fas fa-link"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Back to Blog -->
+                <div class="article-nav">
+                    <a href="blog.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Articles -->
+    <section class="related-articles" id="related-articles" style="display: none;">
+        <div class="container">
+            <h2>More Taco Talk</h2>
+            <div class="related-grid" id="related-grid">
+                <!-- Related articles loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-quip">"You had me at tacos!"</p>
+            <div class="footer-social">
+                <a href="https://facebook.com/wheres.aldo.taqueria" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/wheres.aldo.taqueria/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://yelp.com/biz/FFvNpQFXO-vXgru85XvMJg" target="_blank" rel="noopener noreferrer" aria-label="Yelp">
+                    <i class="fab fa-yelp"></i>
+                </a>
+            </div>
+            <p class="footer-copyright">Copyright &copy; 2026 Where's Aldo? Taqueria - All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="blog.js"></script>
+</body>
+</html>

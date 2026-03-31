@@ -344,86 +344,227 @@ function initCalendar() {
 
     // Events data - easily editable
     const events = [
-        {
-            date: '2025-04-01',
-            events: [
-                {
-                    title: 'Cannon Building',
-                    time: '11:00 AM - 2:00 PM',
-                    location: '288 North 1460 West, Salt Lake City, Utah, 84116'
-                },
-                {
-                    title: 'World Cup Trophy Tour',
-                    time: '12:00 PM - 8:00 PM',
-                    location: 'America First Field'
-                }
-            ]
-        },
-        {
-            date: '2025-04-02',
-            events: [
-                {
-                    title: 'Gallivan Center',
-                    time: '11:00 AM - 1:30 PM',
-                    location: '50 E 200 S, Salt Lake City, Utah 84111'
-                }
-            ]
-        },
-        {
-            date: '2025-04-03',
-            events: [
-                {
-                    title: 'U of U Health Sciences',
-                    time: '11:00 AM - 2:00 PM',
-                    location: '10 North 1900 East, Salt Lake City, Utah, 84132'
-                },
-                {
-                    title: 'Cottonwood Corp',
-                    time: '11:00 AM - 2:00 PM',
-                    location: '2795 E Cottonwood Pkwy, Salt Lake City, Utah'
-                }
-            ]
-        },
-        {
-            date: '2025-04-04',
-            events: [
-                {
-                    title: 'Real Salt Lake vs Kansas City',
-                    time: '1:00 PM - 6:00 PM',
-                    location: 'America First Field - 9256 S State St, Sandy, UT'
-                }
-            ]
-        },
-        {
-            date: '2025-04-06',
-            events: [
-                {
-                    title: 'Nelson Labs',
-                    time: '11:00 AM - 2:00 PM',
-                    location: '6280 S Redwood Rd, Salt Lake City, Utah'
-                },
-                {
-                    title: 'Sandy League Night',
-                    time: '5:00 PM - 8:00 PM',
-                    location: '1245 E 9400 S, Sandy'
-                }
-            ]
-        },
-        {
-            date: '2025-04-07',
-            events: [
-                {
-                    title: 'Towne Ridge Towers',
-                    time: '11:00 AM - 2:00 PM',
-                    location: '100 West Towne Ridge Parkway, Sandy, Utah, 84070'
-                },
-                {
-                    title: 'Private Lunch',
-                    time: '11:00 AM - 1:30 PM',
-                    location: '11493 Regal Ridge Ct, Kamas, UT'
-                }
-            ]
-        }
+        // April 2025
+        { date: '2025-04-01', events: [
+            { title: 'Cannon Building', time: '11:00 AM - 2:00 PM', location: '288 North 1460 West, Salt Lake City, Utah, 84116' },
+            { title: 'World Cup Trophy Tour', time: '12:00 PM - 8:00 PM', location: 'America First Field' }
+        ]},
+        { date: '2025-04-02', events: [
+            { title: 'Gallivan Center', time: '11:00 AM - 1:30 PM', location: '50 E 200 S, Salt Lake City, Utah 84111' }
+        ]},
+        { date: '2025-04-03', events: [
+            { title: 'U of U Health Sciences', time: '11:00 AM - 2:00 PM', location: '10 North 1900 East, Salt Lake City, Utah, 84132' },
+            { title: 'Cottonwood Corp', time: '11:00 AM - 2:00 PM', location: '2795 E Cottonwood Pkwy, Salt Lake City, Utah' }
+        ]},
+        { date: '2025-04-04', events: [
+            { title: 'Real Salt Lake vs Kansas City', time: '1:00 PM - 6:00 PM', location: 'America First Field - 9256 S State St, Sandy, UT' }
+        ]},
+        { date: '2025-04-06', events: [
+            { title: 'Nelson Labs', time: '11:00 AM - 2:00 PM', location: '6280 S Redwood Rd, Salt Lake City, Utah' },
+            { title: 'Sandy League Night', time: '5:00 PM - 8:00 PM', location: '1245 E 9400 S, Sandy' }
+        ]},
+        { date: '2025-04-07', events: [
+            { title: 'Towne Ridge Towers', time: '11:00 AM - 2:00 PM', location: '100 West Towne Ridge Parkway, Sandy, Utah, 84070' },
+            { title: 'Private Lunch', time: '11:00 AM - 1:30 PM', location: '11493 Regal Ridge Ct, Kamas, UT' }
+        ]},
+        { date: '2025-04-08', events: [
+            { title: '3Form/HQ', time: '11:00 AM - 2:00 PM', location: '2300 W 2300 S, WVC' },
+            { title: 'Morgan Stanley', time: '11:00 AM - 2:00 PM', location: '698 W Shields Ln, South Jordan, UT' },
+            { title: 'Veranda Apts', time: '5:00 PM - 7:00 PM', location: '448 W 13490 S, Draper, UT' },
+            { title: 'Bria Apartments', time: '5:30 PM - 7:30 PM', location: '3330 W 4000 S, West Haven, UT' }
+        ]},
+        { date: '2025-04-09', events: [
+            { title: 'Silver King Beverage Co.', time: '11:00 AM - 2:00 PM', location: '5454 W 150 S Poplar Grove, Salt Lake' },
+            { title: 'Davis Technical College', time: '4:30 PM - 8:00 PM', location: 'Davis Technical College (550 S 300 E, Kaysville, UT 84037)' }
+        ]},
+        { date: '2025-04-10', events: [
+            { title: 'Centerville Junior High', time: '11:30 AM - 1:30 PM', location: 'Centerville Junior High' }
+        ]},
+        { date: '2025-04-11', events: [
+            { title: 'U of U Student Event', time: '11:00 AM - 1:30 PM', location: 'University of Utah' }
+        ]},
+        { date: '2025-04-13', events: [
+            { title: 'North Salt Lake League Night', time: '5:00 PM - 8:00 PM', location: '1140 West 1100 North, North Salt Lake, Utah, 84054' }
+        ]},
+        { date: '2025-04-14', events: [
+            { title: 'Eccles Broadcast Center', time: '11:00 AM - 2:00 PM', location: '101 S Wasatch Dr, Salt Lake City, UT' }
+        ]},
+        { date: '2025-04-15', events: [
+            { title: 'Dell Technologies - Food Truck Battle', time: '11:00 AM - 2:00 PM', location: 'Dell Technologies (13197 Frontrunner Blvd, Draper, UT 84020)' },
+            { title: 'Jackson Peterbilt', time: '11:00 AM - 2:00 PM', location: '1910 S 5500 W' }
+        ]},
+        { date: '2025-04-16', events: [
+            { title: 'SL County Sheriff/Metro Jail', time: '11:00 AM - 2:00 PM', location: '3415 South 900 West, South Salt Lake, Utah, 84119' },
+            { title: 'Moog Medical', time: '11:00 AM - 1:00 PM', location: '4314 Zevex Park Ln, Murray' },
+            { title: 'Salt Lake Crossing Apts', time: '5:30 PM - 8:30 PM', location: '470 W 200 N, Salt Lake City, UT' }
+        ]},
+        { date: '2025-04-18', events: [
+            { title: 'Private Appointment', time: '11:30 AM - 1:30 PM', location: 'Private Location' },
+            { title: 'Real Salt Lake vs San Diego', time: '6:00 PM - 11:00 PM', location: 'America First Field - 9256 S State St, Sandy, UT' }
+        ]},
+        { date: '2025-04-20', events: [
+            { title: 'Herriman League Night', time: '5:00 PM - 8:00 PM', location: '5373 Main Street, Herriman' }
+        ]},
+        { date: '2025-04-21', events: [
+            { title: 'Wasatch 16 Campus', time: '10:30 AM - 1:30 PM', location: '121 West Election Road, Draper, Utah, 84020' },
+            { title: 'Biomerics', time: '11:00 AM - 1:30 PM', location: '6030 Harold Gatty Drive, Salt Lake City, Utah, 84116' }
+        ]},
+        { date: '2025-04-22', events: [
+            { title: 'Center 53', time: '11:00 AM - 2:00 PM', location: '434 W Ascension Way, Murray, UT' },
+            { title: 'Northrop Grumman/Clearfield', time: '11:00 AM - 2:00 PM', location: '11th Street, G-12, Clearfield, UT' },
+            { title: 'Real Salt Lake vs Miami', time: '6:00 PM - 11:00 PM', location: 'America First Field - 9256 S State St, Sandy, UT' }
+        ]},
+        { date: '2025-04-23', events: [
+            { title: 'Private Breakfast', time: '6:30 AM - 8:30 AM', location: '3010 S West Temple St, South Salt Lake, UT' },
+            { title: 'JRC Illuminates', time: '11:00 AM - 2:00 PM', location: '3041 W 2100 S, West Valley City, UT' },
+            { title: 'Tesla', time: '11:00 AM - 2:00 PM', location: '12832 Frontrunner Blvd, Draper' },
+            { title: 'Cyprus Credit Union', time: '11:00 AM - 2:00 PM', location: '3876 Center View Way, West Jordan, Utah 84084' }
+        ]},
+        { date: '2025-04-27', events: [
+            { title: 'Sandy League Night', time: '5:00 PM - 8:00 PM', location: '1245 E 9400 S, Sandy' }
+        ]},
+        { date: '2025-04-28', events: [
+            { title: 'Lone Peak Center', time: '11:00 AM - 2:00 PM', location: 'Lone Peak Center Campus (11781 S Lone Peak Pkwy Ste 230, Draper, UT 84020)' }
+        ]},
+        { date: '2025-04-29', events: [
+            { title: 'Minuteman Office Park', time: '11:00 AM - 2:00 PM', location: '13961 S Minuteman Dr, Draper, UT' },
+            { title: 'Neil Armstrong Academy', time: '4:45 PM - 7:00 PM', location: 'Neil Armstrong Academy - 5194 W Highbury Pkwy, West Valley City, UT 84120' }
+        ]},
+        { date: '2025-04-30', events: [
+            { title: 'Albany Engineered Composites', time: '10:30 AM - 1:30 PM', location: '5995 West Amelia Earhart Drive, Salt Lake City, Utah, 84116' },
+            { title: 'UDC Lunch', time: '11:00 AM - 2:00 PM', location: '1480 North 8000 West, Salt Lake City, Utah, 84116' }
+        ]},
+        // May 2025
+        { date: '2025-05-01', events: [
+            { title: 'Bountiful League Night', time: '5:00 PM - 8:00 PM', location: '54 East 100 South, Bountiful, Utah, 84010' }
+        ]},
+        { date: '2025-05-02', events: [
+            { title: 'Real Salt Lake vs Portland', time: '1:00 PM - 6:00 PM', location: 'America First Field - 9256 S State St, Sandy, UT' }
+        ]},
+        { date: '2025-05-04', events: [
+            { title: 'Mountain View Pharmacy', time: '11:00 AM - 2:00 PM', location: '230 S Main St, Bountiful' },
+            { title: 'North Salt Lake League Night', time: '5:00 PM - 8:00 PM', location: '1140 West 1100 North, North Salt Lake, Utah, 84054' },
+            { title: 'Community Night', time: '5:00 PM - 7:00 PM', location: 'Cottonwood Heights' }
+        ]},
+        { date: '2025-05-05', events: [
+            { title: 'Gallivan Center', time: '11:00 AM - 1:30 PM', location: '50 E 200 S, Salt Lake City, Utah 84111' },
+            { title: 'Draper Cinco de Mayo Festival', time: '6:00 PM - 8:00 PM', location: 'Draper City Park - 12501 S 1300 E, Draper, UT 84020' }
+        ]},
+        { date: '2025-05-06', events: [
+            { title: 'U of U Employee Appreciation Event (private)', time: '11:00 AM - 12:30 PM', location: '50 N 2030 E, Salt Lake City, UT' },
+            { title: 'Lehi League Night', time: '5:00 PM - 8:00 PM', location: '1999 N 600 E, Lehi, UT' }
+        ]},
+        { date: '2025-05-07', events: [
+            { title: 'UTA/Frontrunner HQ', time: '11:00 AM - 2:00 PM', location: '669 W 200 S, Salt Lake City, UT' },
+            { title: 'Taylorsville State Offices', time: '11:00 AM - 2:00 PM', location: '4315 South 2700 West, Taylorsville, Utah, 84129' }
+        ]},
+        { date: '2025-05-08', events: [
+            { title: 'Unforgettable Coatings', time: '12:00 PM - 1:00 PM', location: '213 4860 S, Murray' }
+        ]},
+        { date: '2025-05-11', events: [
+            { title: 'U of U Health Sciences', time: '11:00 AM - 2:00 PM', location: '10 North 1900 East, Salt Lake City, Utah, 84132' }
+        ]},
+        { date: '2025-05-12', events: [
+            { title: 'MASOB Office Buildings', time: '11:00 AM - 2:00 PM', location: '195 North 1950 West, Salt Lake City, Utah, 84116' }
+        ]},
+        { date: '2025-05-13', events: [
+            { title: 'Nelson Labs', time: '11:00 AM - 2:00 PM', location: '6280 S Redwood Rd, Salt Lake City, Utah' },
+            { title: 'St Mark\'s Hospital', time: '11:00 AM - 2:00 PM', location: '1200 East 3900 South, Millcreek, Utah, 84124' },
+            { title: 'Real Salt Lake vs Houston', time: '6:00 PM - 11:00 PM', location: 'America First Field - 9256 S State St, Sandy, UT' }
+        ]},
+        { date: '2025-05-14', events: [
+            { title: 'Morgan Stanley', time: '11:00 AM - 2:00 PM', location: '698 W Shields Ln, South Jordan, UT' },
+            { title: 'Jordan Commons', time: '11:00 AM - 1:30 PM', location: '9350 S 150 E, Sandy, UT' },
+            { title: 'Wilshire Place Apts', time: '4:30 PM - 7:30 PM', location: '6447 Wilshire Park Avenue, West Jordan, Utah, 84081' }
+        ]},
+        { date: '2025-05-16', events: [
+            { title: 'Real Salt Lake vs Colorado', time: '6:00 PM - 11:00 PM', location: 'America First Field - 9256 S State St, Sandy, UT' }
+        ]},
+        { date: '2025-05-18', events: [
+            { title: 'South Towne', time: '11:00 AM - 2:00 PM', location: '200 W Civic Center Dr, Sandy, Utah' },
+            { title: 'Sandy League Night', time: '5:00 PM - 8:00 PM', location: '1245 E 9400 S, Sandy' }
+        ]},
+        { date: '2025-05-19', events: [
+            { title: 'Cottonwood Corp', time: '11:00 AM - 2:00 PM', location: '2795 E Cottonwood Pkwy, Salt Lake City, Utah' }
+        ]},
+        { date: '2025-05-20', events: [
+            { title: 'Intermountain Health/TOSH', time: '11:00 AM - 2:00 PM', location: '5848 Fashion Blvd, Murray' },
+            { title: 'Northrop Grumman/Clearfield Dinner', time: '6:00 PM - 8:00 PM', location: '14 13th Street C-14, Clearfield' }
+        ]},
+        { date: '2025-05-21', events: [
+            { title: 'Gallivan Center', time: '11:00 AM - 1:30 PM', location: '50 E 200 S, Salt Lake City, Utah 84111' }
+        ]},
+        { date: '2025-05-22', events: [
+            { title: 'Teal Drones', time: '11:00 AM - 1:00 PM', location: '2800 S West Temple, South Salt Lake, Utah 84115' }
+        ]},
+        { date: '2025-05-25', events: [
+            { title: 'West Jordan Memorial Day Car Show', time: '10:00 AM - 2:00 PM', location: 'West Jordan' }
+        ]},
+        { date: '2025-05-26', events: [
+            { title: 'Prestige Financial', time: '12:00 PM - 2:00 PM', location: '351 Opportunity Way, Draper, Utah, 84020' }
+        ]},
+        { date: '2025-05-27', events: [
+            { title: 'Cannon Building', time: '11:00 AM - 2:00 PM', location: '288 North 1460 West, Salt Lake City, Utah, 84116' },
+            { title: 'Bridge Investment Group', time: '11:00 AM - 2:00 PM', location: '111 E Sego Lily Dr, Sandy, Utah' },
+            { title: 'Soleil Lofts', time: '5:00 PM - 7:00 PM', location: 'Soleil Lofts Apartments - 3753 W Suri Rise Ln, Herriman, UT 84096' }
+        ]},
+        { date: '2025-05-28', events: [
+            { title: 'Select Health Golf Tournament', time: '7:00 AM - 3:00 PM', location: 'Eaglewood Golf Course - 1110 E Eaglewood Dr, North Salt Lake, UT 84054' },
+            { title: 'Herriman City Rodeo', time: '5:00 PM - 10:00 PM', location: '14101 S 6400 W, Herriman, UT' }
+        ]},
+        { date: '2025-05-29', events: [
+            { title: 'Herriman City Rodeo', time: '5:00 PM - 10:00 PM', location: '14101 S 6400 W, Herriman, UT' }
+        ]},
+        { date: '2025-05-30', events: [
+            { title: 'Private Wedding', time: '4:30 PM - 6:30 PM', location: 'Centerville' },
+            { title: 'Herriman City Rodeo', time: '5:00 PM - 10:00 PM', location: '14101 S 6400 W, Herriman, UT' }
+        ]},
+        // June 2025
+        { date: '2025-06-01', events: [
+            { title: 'Center 53', time: '11:00 AM - 2:00 PM', location: '434 W Ascension Way, Murray, UT' }
+        ]},
+        { date: '2025-06-02', events: [
+            { title: 'Salt Lake County Sheriff/Metro Jail', time: '11:00 AM - 2:00 PM', location: '3415 S 900 W, South Salt Lake, Utah' }
+        ]},
+        { date: '2025-06-03', events: [
+            { title: 'SoJo Station', time: '11:00 AM - 2:00 PM', location: '10377 South Jordan Gateway' }
+        ]},
+        { date: '2025-06-04', events: [
+            { title: 'SH Golf Tournament', time: '7:00 AM - 3:00 PM', location: 'Eaglewood Golf Course - 1110 E Eaglewood Dr, North Salt Lake, UT 84054' },
+            { title: 'Gallivan Center', time: '11:00 AM - 1:30 PM', location: '50 E 200 S, Salt Lake City, Utah 84111' },
+            { title: 'Private graduation party', time: '5:00 PM - 8:00 PM', location: 'Park City' }
+        ]},
+        { date: '2025-06-08', events: [
+            { title: 'Tesla', time: '11:00 AM - 2:00 PM', location: '12832 Frontrunner Blvd, Draper' }
+        ]},
+        { date: '2025-06-09', events: [
+            { title: 'Biomerics', time: '11:00 AM - 1:30 PM', location: '6030 Harold Gatty Drive, Salt Lake City, Utah, 84116' }
+        ]},
+        { date: '2025-06-10', events: [
+            { title: '3Form/HQ', time: '11:00 AM - 2:00 PM', location: '2300 W 2300 S, WVC' }
+        ]},
+        { date: '2025-06-11', events: [
+            { title: 'Silver King Beverage Co.', time: '11:00 AM - 2:00 PM', location: '5454 W 150 S Poplar Grove, Salt Lake' }
+        ]},
+        { date: '2025-06-12', events: [
+            { title: 'U of U Health Sciences', time: '11:00 AM - 2:00 PM', location: '10 North 1900 East, Salt Lake City, Utah, 84132' }
+        ]},
+        { date: '2025-06-13', events: [
+            { title: 'Heart and Soul Event', time: '3:00 PM - 8:00 PM', location: 'Heart and Soul Event' },
+            { title: 'Los Muros 2026', time: '4:00 PM - 9:00 PM', location: '7505 S Holden St, Midvale, UT' },
+            { title: 'Hold for Private Wedding', time: '6:00 PM - 8:00 PM', location: 'Private Location' }
+        ]},
+        { date: '2025-06-16', events: [
+            { title: 'Wasatch 16 Campus', time: '10:30 AM - 1:30 PM', location: '121 West Election Road, Draper, Utah, 84020' },
+            { title: 'Eccles Broadcast Center', time: '11:00 AM - 2:00 PM', location: '101 S Wasatch Dr, Salt Lake City, UT' }
+        ]},
+        { date: '2025-06-17', events: [
+            { title: 'UDC Lunch', time: '11:00 AM - 2:00 PM', location: '1480 North 8000 West, Salt Lake City, Utah, 84116' }
+        ]},
+        { date: '2025-06-18', events: [
+            { title: 'Better Being (Day shift)', time: '10:30 AM - 1:30 PM', location: '580 West 300 North, Ogden, Utah, 84404' },
+            { title: 'Better Being Swing Shift', time: '4:30 PM - 7:30 PM', location: '580 W 300 N, Ogden, Utah' }
+        ]}
     ];
 
     // Current date tracking
@@ -598,8 +739,82 @@ function initCalendar() {
         }
     });
 
+    // Populate upcoming events list (next 7 days)
+    function renderUpcomingEvents() {
+        const eventsListContainer = document.getElementById('events-list-items');
+        if (!eventsListContainer) return;
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const weekFromNow = new Date(today);
+        weekFromNow.setDate(weekFromNow.getDate() + 7);
+
+        const weekdayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+        function getOrdinalSuffix(day) {
+            if (day > 3 && day < 21) return 'th';
+            switch (day % 10) {
+                case 1: return 'st';
+                case 2: return 'nd';
+                case 3: return 'rd';
+                default: return 'th';
+            }
+        }
+
+        let upcomingHtml = '';
+        let eventCount = 0;
+
+        // Sort events by date and filter to upcoming week
+        const upcomingEvents = [];
+        events.forEach(eventDay => {
+            const eventDate = new Date(eventDay.date + 'T12:00:00');
+            if (eventDate >= today && eventDate <= weekFromNow) {
+                eventDay.events.forEach(evt => {
+                    upcomingEvents.push({
+                        date: eventDate,
+                        dateStr: eventDay.date,
+                        ...evt
+                    });
+                });
+            }
+        });
+
+        // Sort by date
+        upcomingEvents.sort((a, b) => a.date - b.date);
+
+        upcomingEvents.forEach(evt => {
+            const weekday = weekdayNames[evt.date.getDay()];
+            const month = monthNames[evt.date.getMonth()];
+            const day = evt.date.getDate();
+            const ordinal = getOrdinalSuffix(day);
+
+            upcomingHtml += `
+                <div class="event-list-item">
+                    <div class="event-list-date">
+                        <span class="event-weekday">${weekday}</span>
+                        <span class="event-day-num">${month.slice(0, 3)} ${day}${ordinal}</span>
+                    </div>
+                    <div class="event-list-info">
+                        <h4>${evt.title}</h4>
+                        <p><i class="fas fa-clock"></i> ${evt.time}</p>
+                        <p><i class="fas fa-map-marker-alt"></i> ${evt.location}</p>
+                    </div>
+                </div>
+            `;
+            eventCount++;
+        });
+
+        if (eventCount === 0) {
+            upcomingHtml = '<p class="no-events">No events scheduled for the next 7 days. Check the calendar for future events!</p>';
+        }
+
+        eventsListContainer.innerHTML = upcomingHtml;
+    }
+
     // Initial render
     renderCalendar();
+    renderUpcomingEvents();
 }
 
 /* ========================================

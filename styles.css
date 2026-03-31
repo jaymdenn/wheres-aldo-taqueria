@@ -852,6 +852,16 @@ p {
     font-size: 0.8125rem;
 }
 
+.no-events {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--color-text-light);
+    font-style: italic;
+    background: var(--color-light);
+    border-radius: 8px;
+    border: 2px dashed var(--color-border);
+}
+
 /* Legacy event card styles */
 .events-grid {
     display: grid;
